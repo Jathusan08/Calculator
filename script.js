@@ -10,3 +10,7 @@ let operatorInput;
 
 let firstNumberPressed = true;
 let secondNumberPressed = false;
+
+allBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {});
+});
