@@ -69,6 +69,23 @@ const validateCommonOperator = (operator) => {
   }
 };
 
+const operate = (number1, operator, number2) => {
+  let firstNumber = Number(number1);
+  let secondNumber = Number(number2);
+  let result = 0;
+  if (operator === "+") {
+    result = firstNumber + secondNumber;
+  } else if (operator === "-") {
+    result = firstNumber - secondNumber;
+  } else if (operator === "*" || operator === "×") {
+    result = firstNumber * secondNumber;
+  } else if (operator === "/" || operator === "÷") {
+    result = firstNumber / secondNumber;
+  }
+
+  return result;
+};
+
 allBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.textContent === "C") {
