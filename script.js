@@ -63,6 +63,12 @@ const getUserNumberInput = (event) => {
   }
 };
 
+const validateCommonOperator = (operator) => {
+  if (operator === "+" || operator === "-") {
+    return true;
+  }
+};
+
 allBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.textContent === "C") {
