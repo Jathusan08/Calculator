@@ -1,7 +1,7 @@
 const allBtns = document.querySelectorAll("button");
 const firstNumber = document.querySelector(".user-input .firstNumber");
-const secondNumber = document.querySelector(".user-input .operator");
-const operator = document.querySelector(".user-input .secondNumber");
+const secondNumber = document.querySelector(".user-input .secondNumber");
+const operator = document.querySelector(".user-input .operator");
 const result = document.querySelector(".result");
 
 let firstNumberInput;
@@ -39,6 +39,27 @@ const validateNumber = (number) => {
     number === "9"
   ) {
     return true;
+  }
+};
+
+const getUserNumberInput = (event) => {
+  console.log(`number clicked`);
+  if (firstNumberPressed) {
+    console.log(`first number`);
+    if (firstNumberInput === undefined) {
+      firstNumberInput = event;
+    } else if (firstNumberInput != undefined) {
+      firstNumberInput += event;
+    }
+    firstNumber.textContent += event;
+  } else if (secondNumberPressed) {
+    console.log(`second number`);
+    if (secondNumberInput === undefined) {
+      secondNumberInput = event;
+    } else if (secondNumberInput != undefined) {
+      secondNumberInput += event;
+    }
+    secondNumber.textContent += event;
   }
 };
 
