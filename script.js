@@ -25,6 +25,23 @@ const clearValues = () => {
   result.textContent = "";
 };
 
+const validateNumber = (number) => {
+  if (
+    number === "0" ||
+    number === "1" ||
+    number === "2" ||
+    number === "3" ||
+    number === "4" ||
+    number === "5" ||
+    number === "6" ||
+    number === "7" ||
+    number === "8" ||
+    number === "9"
+  ) {
+    return true;
+  }
+};
+
 allBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.textContent === "C") {
