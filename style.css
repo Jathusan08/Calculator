@@ -14,3 +14,179 @@ body {
   height: 100%;
   overscroll-behavior: none;
 }
+
+.container {
+  /* looked at online resouces to make sure my footer always stay at the bottom.*/
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(219, 255, 215, 255);
+}
+header {
+  height: 67px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  padding: 10px;
+
+  color: rgb(197, 247, 198);
+  font-family: fantasy;
+
+  background-color: black;
+}
+
+.main-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: rgba(219, 255, 215, 255);
+  height: auto;
+  display: flex;
+
+  gap: 45px;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  height: 500px;
+  width: 255px;
+  background-color: rgba(17, 19, 32, 255);
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen-container {
+  height: 150px;
+  width: 215px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 36px;
+}
+
+.screen-container .remove-btn {
+  box-shadow: none;
+}
+.user-input {
+  font-size: 25px;
+  color: white;
+  height: 29.5px;
+}
+
+.operator {
+  color: rgba(39, 207, 8, 255);
+}
+
+.result {
+  font-size: 18px;
+  color: rgba(102, 103, 98, 255);
+  height: 20.5px;
+}
+
+.remove-btn {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  font-size: 20px;
+}
+
+hr {
+  width: 215px;
+  margin-bottom: 15px;
+}
+.button-container {
+  height: 280px;
+  width: 215px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.button-container .row {
+  display: flex;
+  flex-direction: row;
+  height: 55px;
+  width: 215px;
+  gap: 12px;
+}
+
+button {
+  height: 45px;
+  width: 45px;
+  background-color: rgba(16, 18, 31, 255);
+  border: none;
+  outline: none;
+  color: rgba(173, 173, 174, 255);
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.22),
+    1px 0px 0px 0px rgba(0, 0, 0, 0.22), 1px 2px 0px 0px rgba(0, 0, 0, 0.22),
+    2px 1px 0px 0px rgba(0, 0, 0, 0.22), 2px 3px 0px 0px rgba(0, 0, 0, 0.22),
+    3px 2px 0px 0px rgba(0, 0, 0, 0.22), 3px 4px 0px 0px rgba(0, 0, 0, 0.22),
+    4px 3px 0px 0px rgba(0, 0, 0, 0.22), 4px 5px 0px 0px rgba(0, 0, 0, 0.22),
+    5px 4px 0px 0px rgba(0, 0, 0, 0.22), 5px 6px 0px 0px rgba(0, 0, 0, 0.22),
+    6px 5px 0px 0px rgba(0, 0, 0, 0.22), 6px 7px 0px 0px rgba(0, 0, 0, 0.22),
+    7px 6px 0px 0px rgba(0, 0, 0, 0.22), 7px 8px 0px 0px rgba(0, 0, 0, 0.22),
+    8px 7px 0px 0px rgba(0, 0, 0, 0.22);
+}
+
+.clear-btn,
+.plus-or-minus-btn,
+.bracket-btn,
+.percentage-btn-2,
+.divide-btn,
+.multiple-btn,
+.subtract-btn,
+.add-btn,
+.equal-btn,
+.remove-btn {
+  color: rgba(39, 207, 8, 255);
+}
+
+.button-container .row:last-child {
+  display: flex;
+  flex-direction: row;
+}
+
+.button-container .row:last-child .zero-btn {
+  width: 104px;
+}
+
+.equal-btn,
+.decimal-btn {
+  align-self: flex-end;
+}
+
+footer h3,
+footer h3 a {
+  text-align: center;
+  background-color: black;
+  color: rgb(197, 247, 198);
+  font-size: 20px;
+  padding: 25px;
+}
+
+footer h3 a {
+  color: rgb(197, 247, 198);
+  background-color: black;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.button-container .row button:hover,
+.remove-btn:hover {
+  background-color: rgba(49, 55, 95, 255);
+}
