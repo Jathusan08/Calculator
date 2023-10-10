@@ -14,3 +14,5 @@ let secondNumberPressed = false;
 allBtns.forEach((btn) => {
   btn.addEventListener("click", () => {});
 });
+
+document.addEventListener("keypress", (event) => {});
