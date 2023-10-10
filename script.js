@@ -67,8 +67,16 @@ allBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.textContent === "C") {
       clearValues();
+    } else if (validateNumber(btn.textContent)) {
+      console.log(`number pressed`);
+      getUserNumberInput(btn.textContent);
     }
   });
 });
 
-document.addEventListener("keypress", (event) => {});
+document.addEventListener("keypress", (event) => {
+  if (validateNumber(event.key)) {
+    console.log(`number pressed`);
+    getUserNumberInput(event.key);
+  }
+});
