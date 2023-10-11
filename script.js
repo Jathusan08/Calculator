@@ -86,6 +86,36 @@ const operate = (number1, operator, number2) => {
   return result;
 };
 
+const getUserOperatorInput = (event) => {
+  console.log(`Mathematical key operation clicked`);
+
+  if (
+    firstNumberInput != undefined &&
+    operatorInput != undefined &&
+    secondNumberInput != undefined
+  ) {
+    result.textContent = operate(
+      firstNumberInput,
+      operatorInput,
+      secondNumberInput
+    );
+    firstNumberInput = result.textContent;
+    secondNumberInput = undefined;
+    operatorInput = event;
+    firstNumber.textContent = firstNumberInput;
+    secondNumber.textContent = "";
+    operator.textContent = operatorInput;
+    firstNumberPressed = false;
+    secondNumberPressed = true;
+  } else if (firstNumberInput != undefined && operatorInput === undefined) {
+    operatorInput = event;
+    operator.textContent = operatorInput;
+    firstNumber.textContent = firstNumberInput;
+    firstNumberPressed = false;
+    secondNumberPressed = true;
+  }
+};
+
 allBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.textContent === "C") {
@@ -93,6 +123,12 @@ allBtns.forEach((btn) => {
     } else if (validateNumber(btn.textContent)) {
       console.log(`number pressed`);
       getUserNumberInput(btn.textContent);
+    } else if (
+      validateCommonOperator(btn.textContent) ||
+      btn.textContent === "÷" ||
+      btn.textContent === "×"
+    ) {
+      getUserOperatorInput(btn.textContent);
     }
   });
 });
@@ -101,5 +137,11 @@ document.addEventListener("keypress", (event) => {
   if (validateNumber(event.key)) {
     console.log(`number pressed`);
     getUserNumberInput(event.key);
+  } else if (
+    validateCommonOperator(event.key) ||
+    event.key === "/" ||
+    event.key === "*"
+  ) {
+    getUserOperatorInput(event.key);
   }
 });
