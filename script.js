@@ -116,6 +116,31 @@ const getUserOperatorInput = (event) => {
   }
 };
 
+const getResult = () => {
+  if (
+    firstNumberInput != undefined &&
+    operatorInput != undefined &&
+    secondNumberInput != undefined
+  ) {
+    result.textContent = operate(
+      firstNumberInput,
+      operatorInput,
+      secondNumberInput
+    );
+    firstNumberInput = result.textContent;
+    firstNumber.textContent = result.textContent;
+
+    operatorInput = undefined;
+    operator.textContent = "";
+
+    secondNumberInput = undefined;
+    secondNumber.textContent = "";
+
+    firstNumberPressed = false;
+    secondNumberPressed = true;
+  }
+};
+
 allBtns.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     if (btn.textContent === "C") {
