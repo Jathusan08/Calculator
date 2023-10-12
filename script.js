@@ -136,8 +136,8 @@ const getResult = () => {
     secondNumberInput = undefined;
     secondNumber.textContent = "";
 
-    firstNumberPressed = false;
-    secondNumberPressed = true;
+    firstNumberPressed = true;
+    secondNumberPressed = false;
   }
 };
 
@@ -154,12 +154,15 @@ allBtns.forEach((btn) => {
       btn.textContent === "×"
     ) {
       getUserOperatorInput(btn.textContent);
+    } else if (btn.textContent === "=") {
+      getResult();
     }
     event.target.blur();
   });
 });
 
 document.addEventListener("keypress", (event) => {
+  console.log(event);
   if (validateNumber(event.key)) {
     console.log(`number pressed`);
     getUserNumberInput(event.key);
@@ -169,5 +172,7 @@ document.addEventListener("keypress", (event) => {
     event.key === "*"
   ) {
     getUserOperatorInput(event.key);
+  } else if (event.key === "Enter") {
+    getResult();
   }
 });
