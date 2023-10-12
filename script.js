@@ -117,7 +117,7 @@ const getUserOperatorInput = (event) => {
 };
 
 allBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", (event) => {
     if (btn.textContent === "C") {
       clearValues();
     } else if (validateNumber(btn.textContent)) {
@@ -130,6 +130,7 @@ allBtns.forEach((btn) => {
     ) {
       getUserOperatorInput(btn.textContent);
     }
+    event.target.blur();
   });
 });
 
