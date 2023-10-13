@@ -156,6 +156,29 @@ allBtns.forEach((btn) => {
       getUserOperatorInput(btn.textContent);
     } else if (btn.textContent === "=") {
       getResult();
+    } else if (btn.textContent === "+/-") {
+      let newString = "";
+      if (firstNumberPressed && firstNumberInput != undefined) {
+        if (firstNumberInput.charAt(0) != "-") {
+          newString = `-${firstNumberInput}`;
+          firstNumber.textContent = newString;
+          firstNumberInput = newString;
+        } else if (firstNumberInput.charAt(0) === "-") {
+          newString = firstNumberInput.slice(1);
+          firstNumber.textContent = newString;
+          firstNumberInput = newString;
+        }
+      } else if (secondNumberPressed && secondNumberInput != undefined) {
+        if (secondNumberInput.charAt(0) != "-") {
+          newString = `-${secondNumberInput}`;
+          secondNumber.textContent = newString;
+          secondNumberInput = newString;
+        } else if (secondNumberInput.charAt(0) === "-") {
+          newString = secondNumberInput.slice(1);
+          secondNumber.textContent = newString;
+          secondNumberInput = newString;
+        }
+      }
     }
     event.target.blur();
   });
