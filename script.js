@@ -150,6 +150,20 @@ const checkDecimalExist = (number) => {
   return false;
 };
 
+const addDecimalToNumber = () => {
+  if (firstNumberPressed && firstNumberInput != undefined) {
+    if (checkDecimalExist(firstNumberInput) != true) {
+      firstNumber.textContent += ".";
+      firstNumberInput = firstNumber.textContent;
+    }
+  } else if (secondNumberPressed && secondNumberInput != undefined) {
+    if (checkDecimalExist(secondNumberInput) != true) {
+      secondNumber.textContent += ".";
+      secondNumberInput = secondNumber.textContent;
+    }
+  }
+};
+
 allBtns.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     if (btn.textContent === "C") {
