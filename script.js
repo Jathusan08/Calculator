@@ -202,6 +202,8 @@ allBtns.forEach((btn) => {
           secondNumberInput = newString;
         }
       }
+    } else if (btn.textContent === ".") {
+      addDecimalToNumber();
     }
     event.target.blur();
   });
@@ -220,5 +222,7 @@ document.addEventListener("keypress", (event) => {
     getUserOperatorInput(event.key);
   } else if (event.key === "Enter") {
     getResult();
+  } else if (event.key === ".") {
+    addDecimalToNumber();
   }
 });
