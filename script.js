@@ -141,6 +141,15 @@ const getResult = () => {
   }
 };
 
+const checkDecimalExist = (number) => {
+  for (let i = 0; i < number.length; i++) {
+    if (number[i] === ".") {
+      return true;
+    }
+  }
+  return false;
+};
+
 allBtns.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     if (btn.textContent === "C") {
