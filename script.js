@@ -218,6 +218,7 @@ allBtns.forEach((btn) => {
       console.log("percentage");
       calculatePercentage();
     }
+
     event.target.blur();
   });
 });
