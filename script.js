@@ -132,8 +132,10 @@ const getResult = () => {
 };
 
 const checkDecimalExist = (number) => {
-  for (let i = 0; i < number.length; i++) {
-    if (number[i] === ".") {
+  let num = number.toString();
+  for (let i = 0; i < num.length; i++) {
+    if (num[i] === ".") {
+      console.log(`decimal found`);
       return true;
     }
   }
@@ -143,6 +145,7 @@ const checkDecimalExist = (number) => {
 const addDecimalToNumber = () => {
   if (firstNumberPressed && firstNumberInput != undefined) {
     if (checkDecimalExist(firstNumberInput) != true) {
+      console.log(`decimal found`);
       firstNumber.textContent += ".";
       firstNumberInput = firstNumber.textContent;
     }
@@ -194,6 +197,9 @@ allBtns.forEach((btn) => {
       }
     } else if (btn.textContent === ".") {
       addDecimalToNumber();
+    } else if (btn.textContent === "%") {
+      console.log("percentage");
+      calculatePercentage();
     }
     event.target.blur();
   });
