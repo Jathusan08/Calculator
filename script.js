@@ -80,9 +80,9 @@ const getUserOperatorInput = (event) => {
   console.log(`Mathematical key operation clicked`);
 
   if (
-    firstNumberInput != undefined &&
-    operatorInput != undefined &&
-    secondNumberInput != undefined
+    (firstNumberInput != undefined || firstNumberInput != "") &&
+    (operatorInput != undefined || operatorInput != "") &&
+    (secondNumberInput != undefined || secondNumberInput != "")
   ) {
     result.textContent = operate(
       firstNumberInput,
@@ -97,7 +97,10 @@ const getUserOperatorInput = (event) => {
     operator.textContent = operatorInput;
     firstNumberPressed = false;
     secondNumberPressed = true;
-  } else if (firstNumberInput != undefined && operatorInput === undefined) {
+  } else if (
+    firstNumberInput != undefined &&
+    (operatorInput === undefined || operatorInput === "")
+  ) {
     operatorInput = event;
     operator.textContent = operatorInput;
     firstNumber.textContent = firstNumberInput;
@@ -108,9 +111,9 @@ const getUserOperatorInput = (event) => {
 
 const getResult = () => {
   if (
-    firstNumberInput != undefined &&
-    operatorInput != undefined &&
-    secondNumberInput != undefined
+    (firstNumberInput != undefined || firstNumberInput != "") &&
+    (operatorInput != undefined || operatorInput != "") &&
+    (secondNumberInput != undefined || secondNumberInput != "")
   ) {
     result.textContent = operate(
       firstNumberInput,
@@ -143,13 +146,19 @@ const checkDecimalExist = (number) => {
 };
 
 const addDecimalToNumber = () => {
-  if (firstNumberPressed && firstNumberInput != undefined) {
+  if (
+    firstNumberPressed &&
+    (firstNumberInput != undefined || firstNumberInput != "")
+  ) {
     if (checkDecimalExist(firstNumberInput) != true) {
       console.log(`decimal found`);
       firstNumber.textContent += ".";
       firstNumberInput = firstNumber.textContent;
     }
-  } else if (secondNumberPressed && secondNumberInput != undefined) {
+  } else if (
+    secondNumberPressed &&
+    (secondNumberInput != undefined || secondNumberInput != "")
+  ) {
     if (checkDecimalExist(secondNumberInput) != true) {
       secondNumber.textContent += ".";
       secondNumberInput = secondNumber.textContent;
@@ -160,13 +169,13 @@ const addDecimalToNumber = () => {
 const calculatePercentage = () => {
   let number;
   if (firstNumberPressed) {
-    if (firstNumberInput === undefined || firstNumberInput != "") {
+    if (firstNumberInput != undefined || firstNumberInput != "") {
       number = Number(firstNumberInput) / 100;
       firstNumber.textContent = number;
       firstNumberInput = number;
     }
   } else if (secondNumberPressed) {
-    if (secondNumberInput === undefined || secondNumberInput != "") {
+    if (secondNumberInput != undefined || secondNumberInput != "") {
       number = Number(secondNumberInput) / 100;
       secondNumber.textContent = number;
       secondNumberInput = number;
@@ -191,7 +200,10 @@ allBtns.forEach((btn) => {
       getResult();
     } else if (btn.textContent === "+/-") {
       let newString = "";
-      if (firstNumberPressed && firstNumberInput != undefined) {
+      if (
+        firstNumberPressed &&
+        (firstNumberInput != undefined || firstNumberInput != "")
+      ) {
         if (firstNumberInput.charAt(0) != "-") {
           newString = `-${firstNumberInput}`;
           firstNumber.textContent = newString;
@@ -201,7 +213,10 @@ allBtns.forEach((btn) => {
           firstNumber.textContent = newString;
           firstNumberInput = newString;
         }
-      } else if (secondNumberPressed && secondNumberInput != undefined) {
+      } else if (
+        secondNumberPressed &&
+        (secondNumberInput != undefined || secondNumberInput != "")
+      ) {
         if (secondNumberInput.charAt(0) != "-") {
           newString = `-${secondNumberInput}`;
           secondNumber.textContent = newString;
