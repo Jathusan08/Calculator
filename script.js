@@ -157,6 +157,23 @@ const addDecimalToNumber = () => {
   }
 };
 
+const calculatePercentage = () => {
+  let number;
+  if (firstNumberPressed) {
+    if (firstNumberInput === undefined || firstNumberInput != "") {
+      number = Number(firstNumberInput) / 100;
+      firstNumber.textContent = number;
+      firstNumberInput = number;
+    }
+  } else if (secondNumberPressed) {
+    if (secondNumberInput === undefined || secondNumberInput != "") {
+      number = Number(secondNumberInput) / 100;
+      secondNumber.textContent = number;
+      secondNumberInput = number;
+    }
+  }
+};
+
 allBtns.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     if (btn.textContent === "C") {
