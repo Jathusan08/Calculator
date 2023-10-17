@@ -80,9 +80,12 @@ const getUserOperatorInput = (event) => {
   console.log(`Mathematical key operation clicked`);
 
   if (
-    (firstNumberInput != undefined || firstNumberInput != "") &&
-    (operatorInput != undefined || operatorInput != "") &&
-    (secondNumberInput != undefined || secondNumberInput != "")
+    firstNumberInput != undefined &&
+    firstNumberInput != "" &&
+    operatorInput != undefined &&
+    operatorInput != "" &&
+    secondNumberInput != undefined &&
+    secondNumberInput != ""
   ) {
     result.textContent = operate(
       firstNumberInput,
@@ -111,9 +114,12 @@ const getUserOperatorInput = (event) => {
 
 const getResult = () => {
   if (
-    (firstNumberInput != undefined || firstNumberInput != "") &&
-    (operatorInput != undefined || operatorInput != "") &&
-    (secondNumberInput != undefined || secondNumberInput != "")
+    firstNumberInput != undefined &&
+    firstNumberInput != "" &&
+    operatorInput != undefined &&
+    operatorInput != "" &&
+    secondNumberInput != undefined &&
+    secondNumberInput != ""
   ) {
     result.textContent = operate(
       firstNumberInput,
@@ -148,7 +154,8 @@ const checkDecimalExist = (number) => {
 const addDecimalToNumber = () => {
   if (
     firstNumberPressed &&
-    (firstNumberInput != undefined || firstNumberInput != "")
+    firstNumberInput != undefined &&
+    firstNumberInput != ""
   ) {
     if (checkDecimalExist(firstNumberInput) != true) {
       console.log(`decimal found`);
@@ -157,7 +164,8 @@ const addDecimalToNumber = () => {
     }
   } else if (
     secondNumberPressed &&
-    (secondNumberInput != undefined || secondNumberInput != "")
+    secondNumberInput != undefined &&
+    secondNumberInput != ""
   ) {
     if (checkDecimalExist(secondNumberInput) != true) {
       secondNumber.textContent += ".";
@@ -169,16 +177,66 @@ const addDecimalToNumber = () => {
 const calculatePercentage = () => {
   let number;
   if (firstNumberPressed) {
-    if (firstNumberInput != undefined || firstNumberInput != "") {
+    if (firstNumberInput != undefined && firstNumberInput != "") {
       number = Number(firstNumberInput) / 100;
       firstNumber.textContent = number;
       firstNumberInput = number;
     }
   } else if (secondNumberPressed) {
-    if (secondNumberInput != undefined || secondNumberInput != "") {
+    if (secondNumberInput != undefined && secondNumberInput != "") {
       number = Number(secondNumberInput) / 100;
       secondNumber.textContent = number;
       secondNumberInput = number;
+    }
+  }
+};
+
+const eraseNumber = () => {
+  let newString = "";
+
+  if (secondNumberInput != undefined || secondNumberInput === "") {
+    if (secondNumberInput === "") {
+      if (secondNumberPressed) {
+        secondNumberPressed = false;
+      }
+      secondNumberInput = undefined;
+      operator.textContent = "";
+      operatorInput = "";
+    } else if (secondNumberInput != undefined) {
+      newString = secondNumberInput.slice(0, -1);
+      secondNumber.textContent = newString;
+      secondNumberInput = newString;
+    }
+  } else if (operatorInput != undefined || operatorInput === "") {
+    if (operatorInput === "") {
+      operatorInput = undefined;
+      newString = firstNumberInput.slice(0, -1);
+      firstNumber.textContent = newString;
+      firstNumberInput = newString;
+      firstNumberPressed = true;
+    } else if (operatorInput != undefined) {
+      operator.textContent = "";
+      operatorInput = "";
+
+      if (operatorInput === "") {
+        secondNumberPressed = false;
+      }
+    }
+  } else if (firstNumberInput != undefined || firstNumberInput === "") {
+    if (firstNumberInput === "") {
+      console.log("undefined");
+      firstNumberInput = undefined;
+      firstNumberPressed = true;
+    } else if (firstNumberInput != undefined) {
+      console.log("clear");
+      newString = firstNumberInput.slice(0, -1);
+      firstNumber.textContent = newString;
+      firstNumberInput = newString;
+      if (firstNumberInput === "") {
+        if (secondNumberPressed) {
+          secondNumberPressed = false;
+        }
+      }
     }
   }
 };
@@ -202,7 +260,8 @@ allBtns.forEach((btn) => {
       let newString = "";
       if (
         firstNumberPressed &&
-        (firstNumberInput != undefined || firstNumberInput != "")
+        firstNumberInput != undefined &&
+        firstNumberInput != ""
       ) {
         if (firstNumberInput.charAt(0) != "-") {
           newString = `-${firstNumberInput}`;
@@ -215,7 +274,8 @@ allBtns.forEach((btn) => {
         }
       } else if (
         secondNumberPressed &&
-        (secondNumberInput != undefined || secondNumberInput != "")
+        secondNumberInput != undefined &&
+        secondNumberInput != ""
       ) {
         if (secondNumberInput.charAt(0) != "-") {
           newString = `-${secondNumberInput}`;
@@ -232,6 +292,9 @@ allBtns.forEach((btn) => {
     } else if (btn.textContent === "%") {
       console.log("percentage");
       calculatePercentage();
+    } else if (btn.textContent === "⌫") {
+      console.log("remove");
+      eraseNumber();
     }
 
     event.target.blur();
