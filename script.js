@@ -292,6 +292,9 @@ allBtns.forEach((btn) => {
     } else if (btn.textContent === "%") {
       console.log("percentage");
       calculatePercentage();
+    } else if (btn.textContent === "⌫") {
+      console.log("remove");
+      eraseNumber();
     }
 
     event.target.blur();
