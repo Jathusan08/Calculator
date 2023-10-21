@@ -82,10 +82,12 @@ const getUserOperatorInput = (event) => {
   if (
     firstNumberInput != undefined &&
     firstNumberInput != "" &&
+    firstNumberInput != "-" &&
     operatorInput != undefined &&
     operatorInput != "" &&
     secondNumberInput != undefined &&
-    secondNumberInput != ""
+    secondNumberInput != "" &&
+    secondNumberInput != "-"
   ) {
     result.textContent = operate(
       firstNumberInput,
@@ -102,6 +104,8 @@ const getUserOperatorInput = (event) => {
     secondNumberPressed = true;
   } else if (
     firstNumberInput != undefined &&
+    firstNumberInput != "" &&
+    firstNumberInput != "-" &&
     (operatorInput === undefined || operatorInput === "")
   ) {
     operatorInput = event;
@@ -116,10 +120,12 @@ const getResult = () => {
   if (
     firstNumberInput != undefined &&
     firstNumberInput != "" &&
+    firstNumberInput != "-" &&
     operatorInput != undefined &&
     operatorInput != "" &&
     secondNumberInput != undefined &&
-    secondNumberInput != ""
+    secondNumberInput != "" &&
+    secondNumberInput != "-"
   ) {
     result.textContent = operate(
       firstNumberInput,
@@ -155,7 +161,8 @@ const addDecimalToNumber = () => {
   if (
     firstNumberPressed &&
     firstNumberInput != undefined &&
-    firstNumberInput != ""
+    firstNumberInput != "" &&
+    firstNumberInput != "-"
   ) {
     if (checkDecimalExist(firstNumberInput) != true) {
       console.log(`decimal found`);
@@ -165,7 +172,8 @@ const addDecimalToNumber = () => {
   } else if (
     secondNumberPressed &&
     secondNumberInput != undefined &&
-    secondNumberInput != ""
+    secondNumberInput != "" &&
+    secondNumberInput != "-"
   ) {
     if (checkDecimalExist(secondNumberInput) != true) {
       secondNumber.textContent += ".";
@@ -177,13 +185,22 @@ const addDecimalToNumber = () => {
 const calculatePercentage = () => {
   let number;
   if (firstNumberPressed) {
-    if (firstNumberInput != undefined && firstNumberInput != "") {
+    if (
+      firstNumberInput != undefined &&
+      firstNumberInput != "" &&
+      firstNumberInput != "-"
+    ) {
       number = Number(firstNumberInput) / 100;
       firstNumber.textContent = number;
       firstNumberInput = number;
     }
   } else if (secondNumberPressed) {
-    if (secondNumberInput != undefined && secondNumberInput != "") {
+    if (
+      secondNumberInput != undefined &&
+      secondNumberInput != "" &&
+      secondNumberInput != "" &&
+      secondNumberInput != "-"
+    ) {
       number = Number(secondNumberInput) / 100;
       secondNumber.textContent = number;
       secondNumberInput = number;
@@ -203,14 +220,14 @@ const eraseNumber = () => {
       operator.textContent = "";
       operatorInput = "";
     } else if (secondNumberInput != undefined) {
-      newString = secondNumberInput.slice(0, -1);
+      newString = secondNumberInput.toString().slice(0, -1);
       secondNumber.textContent = newString;
       secondNumberInput = newString;
     }
   } else if (operatorInput != undefined || operatorInput === "") {
     if (operatorInput === "") {
       operatorInput = undefined;
-      newString = firstNumberInput.slice(0, -1);
+      newString = firstNumberInput.toString().slice(0, -1);
       firstNumber.textContent = newString;
       firstNumberInput = newString;
       firstNumberPressed = true;
@@ -229,7 +246,7 @@ const eraseNumber = () => {
       firstNumberPressed = true;
     } else if (firstNumberInput != undefined) {
       console.log("clear");
-      newString = firstNumberInput.slice(0, -1);
+      newString = firstNumberInput.toString().slice(0, -1);
       firstNumber.textContent = newString;
       firstNumberInput = newString;
       if (firstNumberInput === "") {
@@ -263,12 +280,12 @@ allBtns.forEach((btn) => {
         firstNumberInput != undefined &&
         firstNumberInput != ""
       ) {
-        if (firstNumberInput.charAt(0) != "-") {
+        if (firstNumberInput.toString().charAt(0) != "-") {
           newString = `-${firstNumberInput}`;
           firstNumber.textContent = newString;
           firstNumberInput = newString;
-        } else if (firstNumberInput.charAt(0) === "-") {
-          newString = firstNumberInput.slice(1);
+        } else if (firstNumberInput.toString().charAt(0) === "-") {
+          newString = firstNumberInput.toString().slice(1);
           firstNumber.textContent = newString;
           firstNumberInput = newString;
         }
@@ -277,12 +294,12 @@ allBtns.forEach((btn) => {
         secondNumberInput != undefined &&
         secondNumberInput != ""
       ) {
-        if (secondNumberInput.charAt(0) != "-") {
+        if (secondNumberInput.toString().charAt(0) != "-") {
           newString = `-${secondNumberInput}`;
           secondNumber.textContent = newString;
           secondNumberInput = newString;
-        } else if (secondNumberInput.charAt(0) === "-") {
-          newString = secondNumberInput.slice(1);
+        } else if (secondNumberInput.toString().charAt(0) === "-") {
+          newString = secondNumberInput.toString().slice(1);
           secondNumber.textContent = newString;
           secondNumberInput = newString;
         }

@@ -189,4 +189,5 @@ footer {
 .button-container .row button:hover,
 .remove-btn:hover {
   background-color: rgba(49, 55, 95, 255);
+  cursor: pointer;
 }
