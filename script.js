@@ -70,7 +70,11 @@ const operate = (number1, operator, number2) => {
   } else if (operator === "*" || operator === "×") {
     result = firstNumber * secondNumber;
   } else if (operator === "/" || operator === "÷") {
-    result = firstNumber / secondNumber;
+    if (secondNumber === 0) {
+      result = "ERROR";
+    } else {
+      result = firstNumber / secondNumber;
+    }
   }
 
   return result;
@@ -89,19 +93,35 @@ const getUserOperatorInput = (event) => {
     secondNumberInput != "" &&
     secondNumberInput != "-"
   ) {
-    result.textContent = operate(
-      firstNumberInput,
-      operatorInput,
-      secondNumberInput
-    );
-    firstNumberInput = result.textContent;
-    secondNumberInput = undefined;
-    operatorInput = event;
-    firstNumber.textContent = firstNumberInput;
-    secondNumber.textContent = "";
-    operator.textContent = operatorInput;
-    firstNumberPressed = false;
-    secondNumberPressed = true;
+    if (
+      operate(firstNumberInput, operatorInput, secondNumberInput) != "ERROR"
+    ) {
+      result.textContent = operate(
+        firstNumberInput,
+        operatorInput,
+        secondNumberInput
+      );
+      firstNumberInput = result.textContent;
+      secondNumberInput = undefined;
+      operatorInput = event;
+      firstNumber.textContent = firstNumberInput;
+      secondNumber.textContent = "";
+      operator.textContent = operatorInput;
+      firstNumberPressed = false;
+      secondNumberPressed = true;
+    } else if (
+      operate(firstNumberInput, operatorInput, secondNumberInput) === "ERROR"
+    ) {
+      result.textContent = "ERROR";
+      firstNumberInput = undefined;
+      secondNumberInput = undefined;
+      operatorInput = undefined;
+      firstNumber.textContent = "";
+      secondNumber.textContent = "";
+      operator.textContent = "";
+      firstNumberPressed = true;
+      secondNumberPressed = false;
+    }
   } else if (
     firstNumberInput != undefined &&
     firstNumberInput != "" &&
@@ -127,22 +147,38 @@ const getResult = () => {
     secondNumberInput != "" &&
     secondNumberInput != "-"
   ) {
-    result.textContent = operate(
-      firstNumberInput,
-      operatorInput,
-      secondNumberInput
-    );
-    firstNumberInput = result.textContent;
-    firstNumber.textContent = result.textContent;
+    if (
+      operate(firstNumberInput, operatorInput, secondNumberInput) != "ERROR"
+    ) {
+      result.textContent = operate(
+        firstNumberInput,
+        operatorInput,
+        secondNumberInput
+      );
+      firstNumberInput = result.textContent;
+      firstNumber.textContent = result.textContent;
 
-    operatorInput = undefined;
-    operator.textContent = "";
+      operatorInput = undefined;
+      operator.textContent = "";
 
-    secondNumberInput = undefined;
-    secondNumber.textContent = "";
+      secondNumberInput = undefined;
+      secondNumber.textContent = "";
 
-    firstNumberPressed = true;
-    secondNumberPressed = false;
+      firstNumberPressed = true;
+      secondNumberPressed = false;
+    } else if (
+      operate(firstNumberInput, operatorInput, secondNumberInput) === "ERROR"
+    ) {
+      result.textContent = "ERROR";
+      firstNumberInput = undefined;
+      secondNumberInput = undefined;
+      operatorInput = undefined;
+      firstNumber.textContent = "";
+      secondNumber.textContent = "";
+      operator.textContent = "";
+      firstNumberPressed = true;
+      secondNumberPressed = false;
+    }
   }
 };
 
