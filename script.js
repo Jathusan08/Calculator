@@ -32,24 +32,43 @@ const validateNumber = (number) => {
   }
 };
 
+const checkZeroRepeatedWithNonDecimalNumber = (originalNumber, newNumber) => {
+  let newString = `${originalNumber}${newNumber}`;
+
+  if (newString.charAt(0) === "0" && newString.charAt(1) === "0") {
+    return true;
+  }
+  return false;
+};
+
 const getUserNumberInput = (event) => {
   console.log(`number clicked`);
   if (firstNumberPressed) {
     console.log(`first number`);
     if (firstNumberInput === undefined) {
       firstNumberInput = event;
+      firstNumber.textContent += event;
     } else if (firstNumberInput != undefined) {
-      firstNumberInput += event;
+      if (
+        checkZeroRepeatedWithNonDecimalNumber(firstNumberInput, event) != true
+      ) {
+        firstNumberInput += event;
+        firstNumber.textContent += event;
+      }
     }
-    firstNumber.textContent += event;
   } else if (secondNumberPressed) {
     console.log(`second number`);
     if (secondNumberInput === undefined) {
       secondNumberInput = event;
+      secondNumber.textContent += event;
     } else if (secondNumberInput != undefined) {
-      secondNumberInput += event;
+      if (
+        checkZeroRepeatedWithNonDecimalNumber(secondNumberInput, event) != true
+      ) {
+        secondNumberInput += event;
+        secondNumber.textContent += event;
+      }
     }
-    secondNumber.textContent += event;
   }
 };
 
