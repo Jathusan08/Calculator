@@ -11,6 +11,16 @@ let operatorInput;
 let firstNumberPressed = true;
 let secondNumberPressed = false;
 
+const checkDecimalExist = (number) => {
+  let num = number.toString();
+  for (let i = 0; i < num.length; i++) {
+    if (num[i] === ".") {
+      return true;
+    }
+  }
+  return false;
+};
+
 const clearValues = () => {
   firstNumberPressed = true;
   secondNumberPressed = false;
@@ -96,6 +106,11 @@ const operate = (number1, operator, number2) => {
     } else {
       result = firstNumber / secondNumber;
     }
+  }
+
+  if (checkDecimalExist(result)) {
+    const originalNumber = result;
+    result = originalNumber.toFixed(3);
   }
   return result;
 };
@@ -195,16 +210,6 @@ const getResult = () => {
       secondNumberPressed = false;
     }
   }
-};
-
-const checkDecimalExist = (number) => {
-  let num = number.toString();
-  for (let i = 0; i < num.length; i++) {
-    if (num[i] === ".") {
-      return true;
-    }
-  }
-  return false;
 };
 
 const addDecimalToNumber = () => {
