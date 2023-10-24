@@ -34,7 +34,6 @@ const validateNumber = (number) => {
 
 const checkZeroRepeatedWithNonDecimalNumber = (originalNumber, newNumber) => {
   let newString = `${originalNumber}${newNumber}`;
-
   if (newString.charAt(0) === "0" && newString.charAt(1) === "0") {
     return true;
   }
@@ -42,9 +41,7 @@ const checkZeroRepeatedWithNonDecimalNumber = (originalNumber, newNumber) => {
 };
 
 const getUserNumberInput = (event) => {
-  console.log(`number clicked`);
   if (firstNumberPressed) {
-    console.log(`first number`);
     if (firstNumberInput === undefined) {
       firstNumberInput = event;
       firstNumber.textContent += event;
@@ -60,7 +57,6 @@ const getUserNumberInput = (event) => {
       }
     }
   } else if (secondNumberPressed) {
-    console.log(`second number`);
     if (secondNumberInput === undefined) {
       secondNumberInput = event;
       secondNumber.textContent += event;
@@ -101,13 +97,10 @@ const operate = (number1, operator, number2) => {
       result = firstNumber / secondNumber;
     }
   }
-
   return result;
 };
 
 const getUserOperatorInput = (event) => {
-  console.log(`Mathematical key operation clicked`);
-
   if (
     firstNumberInput != undefined &&
     firstNumberInput != "" &&
@@ -182,13 +175,10 @@ const getResult = () => {
       );
       firstNumberInput = result.textContent;
       firstNumber.textContent = result.textContent;
-
       operatorInput = undefined;
       operator.textContent = "";
-
       secondNumberInput = undefined;
       secondNumber.textContent = "";
-
       firstNumberPressed = true;
       secondNumberPressed = false;
     } else if (
@@ -211,7 +201,6 @@ const checkDecimalExist = (number) => {
   let num = number.toString();
   for (let i = 0; i < num.length; i++) {
     if (num[i] === ".") {
-      console.log(`decimal found`);
       return true;
     }
   }
@@ -226,7 +215,6 @@ const addDecimalToNumber = () => {
     firstNumberInput != "-"
   ) {
     if (checkDecimalExist(firstNumberInput) != true) {
-      console.log(`decimal found`);
       firstNumber.textContent += ".";
       firstNumberInput = firstNumber.textContent;
     }
@@ -302,11 +290,9 @@ const eraseNumber = () => {
     }
   } else if (firstNumberInput != undefined || firstNumberInput === "") {
     if (firstNumberInput === "") {
-      console.log("undefined");
       firstNumberInput = undefined;
       firstNumberPressed = true;
     } else if (firstNumberInput != undefined) {
-      console.log("clear");
       newString = firstNumberInput.toString().slice(0, -1);
       firstNumber.textContent = newString;
       firstNumberInput = newString;
@@ -324,7 +310,6 @@ allBtns.forEach((btn) => {
     if (btn.textContent === "C") {
       clearValues();
     } else if (validateNumber(btn.textContent)) {
-      console.log(`number pressed`);
       getUserNumberInput(btn.textContent);
     } else if (
       validateCommonOperator(btn.textContent) ||
@@ -368,21 +353,16 @@ allBtns.forEach((btn) => {
     } else if (btn.textContent === ".") {
       addDecimalToNumber();
     } else if (btn.textContent === "%") {
-      console.log("percentage");
       calculatePercentage();
     } else if (btn.textContent === "⌫") {
-      console.log("remove");
       eraseNumber();
     }
-
     event.target.blur();
   });
 });
 
 document.addEventListener("keypress", (event) => {
-  console.log(event);
   if (validateNumber(event.key)) {
-    console.log(`number pressed`);
     getUserNumberInput(event.key);
   } else if (
     validateCommonOperator(event.key) ||
