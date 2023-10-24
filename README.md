@@ -1,5 +1,10 @@
 # Project: Calculator
 
+[Live Demo](https://jathusan08.github.io/calculator/)
+
+<img width="380" alt="image" src="https://github.com/Jathusan08/calculator/assets/36281788/484be75a-8048-4eb8-8b20-8044384925fa">
+
+
 ## Introduction
 
 This is a basic calculator implemented in JavaScript, HTML, and CSS. It can perform addition, subtraction, multiplication, and division operations.
