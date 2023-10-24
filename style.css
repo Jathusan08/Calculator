@@ -76,9 +76,16 @@ h1 {
   box-shadow: none;
 }
 .user-input {
-  font-size: 23px;
+  font-size: 21px;
   color: white;
   height: 29.5px;
+  display: flex;
+}
+
+.firstNumber,
+.operator,
+.secondNumber {
+  flex: 1;
 }
 
 .operator {

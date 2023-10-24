@@ -50,7 +50,10 @@ const getUserNumberInput = (event) => {
       firstNumber.textContent += event;
     } else if (firstNumberInput != undefined) {
       if (
-        checkZeroRepeatedWithNonDecimalNumber(firstNumberInput, event) != true
+        checkZeroRepeatedWithNonDecimalNumber(firstNumberInput, event) !=
+          true &&
+        firstNumberInput.length > 0 &&
+        firstNumberInput.length < 10
       ) {
         firstNumberInput += event;
         firstNumber.textContent += event;
@@ -63,7 +66,10 @@ const getUserNumberInput = (event) => {
       secondNumber.textContent += event;
     } else if (secondNumberInput != undefined) {
       if (
-        checkZeroRepeatedWithNonDecimalNumber(secondNumberInput, event) != true
+        checkZeroRepeatedWithNonDecimalNumber(secondNumberInput, event) !=
+          true &&
+        secondNumberInput.length > 0 &&
+        secondNumberInput.length < 10
       ) {
         secondNumberInput += event;
         secondNumber.textContent += event;
